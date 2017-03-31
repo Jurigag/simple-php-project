@@ -23,10 +23,21 @@ class Router
         if ($baseUri) {
             $url = str_replace($baseUri, "", $url);
         }
-        foreach ($this->routes as $pattern => $value) {
+        /**
+         * EN: Direct match
+         * PL: Bezpośrednie powiązanie
+         */
+        if (isset($this->routes[$url])) {
+            $route = $this->routes[$url];
+            $handler = new $route[0]($this->view);
+
+            return call_user_func_array([$handler, $route[1]], $params);
+        }
+        foreach ($this->routes as $pattern => $route) {
             if (preg_match($pattern, $url, $params)) {
-                $handler = new $value[0]($this->view);
-                echo call_user_func_array([$handler, $value[1]], $params);
+                $handler = new $route[0]($this->view);
+
+                return call_user_func_array([$handler, $route[1]], $params);
             }
         }
     }
