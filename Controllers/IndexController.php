@@ -2,6 +2,8 @@
 
 namespace Simpleproject\Controllers;
 
+use Simpleproject\View;
+
 class IndexController
 {
     protected $view;
