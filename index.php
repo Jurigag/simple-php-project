@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require "IndexController.php";
+require "Controllers/IndexController.php";
 require "View.php";
 require "Router.php";
 
@@ -12,7 +12,7 @@ require "Router.php";
  * PL: Powinieneś zapoznać się z composer autoloader aby nie wpisywać require dla klas
  */
 
-use Simpleproject\IndexController;
+use Simpleproject\Controllers\IndexController;
 use Simpleproject\Router;
 use Simpleproject\View;
 

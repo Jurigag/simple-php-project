@@ -1,6 +1,6 @@
 <?php
 
-namespace Simpleproject;
+namespace Simpleproject\Controllers;
 
 class IndexController
 {
