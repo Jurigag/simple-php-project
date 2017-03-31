@@ -25,4 +25,8 @@ $_SESSION["user"] = "admin";
 
 $router = new Router(new View());
 $router->addRoute("/", [IndexController::class, "indexAction"]);
+/**
+ * EN: If you run for example from simple-php-project directory then your baseUri is /simple-php-project
+ * PL: Jeśli uruchamiasz stronę z foldderu simple-php-project to wtedy twój baseUri to /simple-php-project
+ */
 $router->handle($_SERVER['REQUEST_URI'], "/simple-php-project");
