@@ -1,0 +1,5 @@
+<?php if ($this->auth && $this->isAdmin): ?>
+<input type="button" name="previous" class="buttons" value="Ankieta dla Mirków" onclick="window.open('/ankiety/mirki/index.html');" />
+<?php elseif ($this->auth && $this->isModerator): ?>
+Treści dla Moderatorów
+<?php endif; ?>
