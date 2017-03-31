@@ -20,7 +20,7 @@ class Router
 
     public function handle($uriSource)
     {
-        foreach ($routes as $pattern => $value) {
+        foreach ($this->routes as $pattern => $value) {
             if (preg_match($pattern, $uriSource, $params)) {
                 $handler = new $value[0]($this->view);
                 echo call_user_func_array([$handler, $value[1]], $params);
