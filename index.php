@@ -9,6 +9,7 @@ require "Router.php";
  * PL: Powinieneś zapoznać się z composer autoloader aby nie wpisywać require dla klas
  */
 
+use Simpleproject\IndexController;
 use Simpleproject\Router;
 
 /**
@@ -19,4 +20,5 @@ $_SESSION["auth"] = true;
 $_SESSION["user"] = "admin";
 
 $router = new Router(new \Simpleproject\View());
+$router->addRoute("/", [IndexController::class, "indexAction"]);
 $router->handle($_SERVER['REQUEST_URI']);
