@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require "IndexController.php";
 require "View.php";
 require "Router.php";
@@ -11,6 +14,7 @@ require "Router.php";
 
 use Simpleproject\IndexController;
 use Simpleproject\Router;
+use Simpleproject\View;
 
 /**
  * EN: Just for example i set $_SESSION
@@ -19,6 +23,6 @@ use Simpleproject\Router;
 $_SESSION["auth"] = true;
 $_SESSION["user"] = "admin";
 
-$router = new Router(new \Simpleproject\View());
+$router = new Router(new View());
 $router->addRoute("/", [IndexController::class, "indexAction"]);
-$router->handle($_SERVER['REQUEST_URI']);
+$router->handle($_SERVER['REQUEST_URI'], "/simple-php-project");

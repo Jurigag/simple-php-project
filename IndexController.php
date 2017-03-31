@@ -14,11 +14,11 @@ class IndexController
     public function indexAction()
     {
         $viewParams = [
-            'auth' => $_SESSION['auth'] ?? false,
+            'auth' => isset($_SESSION['auth']) ? $_SESSION['auth'] : false,
             'isAdmin' => isset($_SESSION['user']) ? $_SESSION['user'] == 'admin' : false,
             'isModerator' => isset($_SESSION['user']) ? $_SESSION['user'] == 'moderator' : false
         ];
 
-        return $this->view->render('home', $viewParams);
+        return $this->view->render('index', $viewParams);
     }
 }

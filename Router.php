@@ -14,14 +14,17 @@ class Router
 
     public function addRoute($pattern, $handler)
     {
-        $pattern = '/^' . str_replace('/', '\/', $pattern) . '$/';
+        $pattern = '/^'.str_replace('/', '\/', $pattern).'$/';
         $this->routes[$pattern] = $handler;
     }
 
-    public function handle($uriSource)
+    public function handle($url, $baseUri = "")
     {
+        if ($baseUri) {
+            $url = str_replace($baseUri, "", $url);
+        }
         foreach ($this->routes as $pattern => $value) {
-            if (preg_match($pattern, $uriSource, $params)) {
+            if (preg_match($pattern, $url, $params)) {
                 $handler = new $value[0]($this->view);
                 echo call_user_func_array([$handler, $value[1]], $params);
             }
